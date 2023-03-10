@@ -1,0 +1,72 @@
+
+<div class="container">
+  <div class="mt-4 grid grid-cols-1 gap-1 max-w-md">
+    <div>
+      <label for="search" class="block text-sm font-medium leading-6 text-gray-900">Search Name Post</label>
+      <div class="relative mt-2 rounded-md max-w-mds">
+        <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+          <span class="text-gray-500 sm:text-sm">‣ </span>
+        </div>
+        <input type="text" name="search"
+        [(ngModel)]="filterText"
+        class="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="Enter text to search">
+      </div>
+
+    </div>
+
+</div>
+<div class="grid grid-cols-3 gap-3 ">
+  <div class="mt-5 max-w-sm rounded overflow-hidden shadow-md relative" *ngFor="let post of filteredPosts">
+    <div class="px-6 py-4">
+      <div class="font-bold text-xl mb-2">{{ post.name }}</div>
+      <p class="text-gray-700 text-base">
+        {{ post.description }}
+      </p>
+
+      <a [routerLink]="['/edit', post.id]" class="text-indigo-600 absolute right-10 bottom-4">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16"> <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/> </svg>
+      </a>
+      <button class="text-indigo-600 absolute right-4 bottom-4" (click)="openDeleteModal(post.id)">
+
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16"> <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/> <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/> </svg>
+      </button>
+    </div>
+
+  </div>
+
+</div>
+
+
+<div>
+
+  <div class="mt-4 py-1.5 max-w-xs">
+    <button type="submit" class="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" routerLink="/add">New Post</button>
+  </div>
+
+
+</div>
+
+
+</div>
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Confirm Delete</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Are sure to delete this item?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" (click)="delete()">Confirm Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+

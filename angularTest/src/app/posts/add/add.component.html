@@ -1,0 +1,22 @@
+<div class="container">
+  <legend>Add A New Post</legend>
+  <div class="mb-3">
+    <label for="txtName" class="form-label">Post Name</label>
+    <input
+      type="text"
+      [(ngModel)]="postForm.name"
+      class="form-control"
+      id="txtName"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="txtDescription" class="form-label">Description</label>
+    <textarea
+      type="text"
+      [(ngModel)]="postForm.description"
+      class="form-control"
+      id="txtDescription"
+    ></textarea>
+  </div>
+  <button type="button" class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" (click)="save()">Enviar</button>
+</div>
